@@ -1,0 +1,21 @@
+{
+  "name": "hw9",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "github:bhudgins/webProject2",
+  "main": "lib/server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Brandy",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/express-handlebars": "0.0.30",
+    "@types/express-session": "^1.15.8",
+    "@types/express": "^4.11.1",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^9.4.6"
+  }
+}
