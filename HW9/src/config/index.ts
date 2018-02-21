@@ -4,4 +4,4 @@ export let sessionSecret = "bunnyslippers";
 
 export let logFormat = "dev";
 
-export let cloudDirectory = "files";
+export let cloudDirectory = "../dir";
