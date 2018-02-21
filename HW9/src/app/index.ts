@@ -1,22 +1,36 @@
-const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const expressSession = require("express-session");
-const config1 = require("../config");
-const expressHandlebars = require('express-handlebars');
-let app = express();
+import express = require("express");
+import morgan = require("morgan");
+import bodyParser = require("body-parser");
+import expressSession = require("express-session");
+import config1 = require("../config");
+import expressHandlebars = require('express-handlebars');
+import sessionFileStore = require("session-file-store");
+import * as helpers from "./helpers";
+import * as config from "../config"
+
+export const app = express();
 app.engine('hb', expressHandlebars({
-  defaultLayout: null,
+  extname: ".hb",
+    helpers: helpers,
 }));
 
+app.set("view engine", "hb");
+
+if(config.logFormat){
+    app.use(morgan(config.logFormat));
+}
+
+const FileStore = sessionFileStore(expressSession);
 app.use(expressSession({
   secret: config.sessionSecret,
-  saveUninitialized: true,
+  store: new FileStore,
+  saveUninitialized: false,
   resave: false,
 }));
 
+app.use(bodyParser.urlencoded({extended: false}));
 
-app.use(morgan("dev"));
-app.use(bodyParser.urlencoded());
+//routes specific to your app
 
-module.exports = app;
+//Static files
+app.use(express.static("./static"));

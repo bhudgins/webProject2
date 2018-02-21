@@ -1,5 +1,7 @@
-module.exports = {
-    cloudDirectory: "../files",
-    serverPort: 8000,
-    sessionSecret: "bunnySlippers",
-}
+export let serverPort = 8000;
+
+export let sessionSecret = "bunnyslippers";
+
+export let logFormat = "dev";
+
+export let cloudDirectory = "files";
