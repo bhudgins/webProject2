@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cloud Directory</title>
+<title>Directory</title>
 <meta charset="UTF-8">
 </head>
 <body>
-<h1>Cloud Directory</h1>
+Current directory: <strong>{{currentDirectory}}</strong>
+{{#each file}}
 
+{{/each}}
 
+<form method="post" enctype="multipart/form-data">
+<p><input type="file" name="file1" /></p>
+<p><input type ="submit" value="Upload"/></p>
+</form>
 </body>
 
 </html>

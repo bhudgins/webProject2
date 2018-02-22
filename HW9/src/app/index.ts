@@ -7,7 +7,7 @@ import expressHandlebars = require('express-handlebars');
 import sessionFileStore = require("session-file-store");
 import * as helpers from "./helpers";
 import * as config from "../config";
-import * as cloudRouter from "./cloudDirectory/routes";
+import * as cloudRouter from "./cloud/routes";
 export const app = express();
 app.engine('hb', expressHandlebars({
   extname: ".hb",
