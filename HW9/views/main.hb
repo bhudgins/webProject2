@@ -6,8 +6,8 @@
 </head>
 <body>
 Current directory: <strong>{{currentDirectory}}</strong>
-{{#each file}}
-
+{{#each entries}}
+    {{this}}<br>
 {{/each}}
 
 <form method="post" enctype="multipart/form-data">

@@ -3,6 +3,7 @@ import mw = require("./controllers");
 
 let router: Router = Router();
 
-router.get("/", mw.dirPage);
-router.use("/../", mw.pageNotFound)
+router.use("/../", mw.pageNotFound);
+router.use("/", mw.dirPage);
+
 export = router;

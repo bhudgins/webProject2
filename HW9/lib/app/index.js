@@ -1,20 +1,33 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
-const config1 = require("../config");
-const expressHandlebars = require('express-handlebars');
-let app = express();
-app.engine('hb', expressHandlebars({
-    defaultLayout: null,
+const expressHandlebars = require("express-handlebars");
+const sessionFileStore = require("session-file-store");
+const helpers = require("./helpers");
+const config = require("../config");
+const cloudRouter = require("./cloud/routes");
+exports.app = express();
+exports.app.engine('hb', expressHandlebars({
+    extname: ".hb",
+    helpers: helpers,
 }));
-app.use(expressSession({
+exports.app.set("view engine", "hb");
+if (config.logFormat) {
+    exports.app.use(morgan(config.logFormat));
+}
+const FileStore = sessionFileStore(expressSession);
+exports.app.use(expressSession({
     secret: config.sessionSecret,
-    saveUninitialized: true,
+    store: new FileStore,
+    saveUninitialized: false,
     resave: false,
 }));
-app.use(morgan("dev"));
-app.use(bodyParser.urlencoded());
-module.exports = app;
+exports.app.use(bodyParser.urlencoded({ extended: false }));
+//routes specific to your app
+exports.app.use("/cloud", cloudRouter);
+//Static files
+exports.app.use(express.static("./static"));
 //# sourceMappingURL=index.js.map
