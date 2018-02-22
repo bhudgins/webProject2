@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-Current directory: <strong>{{currentDirectory}}</strong>
+Current directory: <strong>{{currentDirectory}}</strong><br>
 {{#each entries}}
     {{this}}<br>
 {{/each}}
