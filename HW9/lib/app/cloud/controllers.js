@@ -11,16 +11,16 @@ function dirPage(req, res, next) {
                 console.log("1");
                 pageNotFound(req, res, next);
             }
-            //console.log(err);
         }
         else {
             if (stats.isDirectory()) {
-                /*console.log(req.url);
+                console.log(req.url);
                 console.log(req.baseUrl);
                 console.log(req.originalUrl);
                 console.log(req.path);
                 console.log(urlFileName);
-                console.log(originalURL);*/
+                console.log(originalURL);
+                console.log(req.query);
                 if (originalURL.charAt(originalURL.length - 1) != "/") {
                     res.status(307);
                     res.redirect(originalURL + "/");
@@ -40,6 +40,16 @@ function dirPage(req, res, next) {
                 }
             }
             else if (stats.isFile()) {
+                if (req.query.download != undefined) {
+                    //console.log(req.params);
+                    //res.download(path, filename)
+                    let filename = urlFileName;
+                    let placeToStart = filename.lastIndexOf("/");
+                    if (placeToStart != -1) {
+                        filename = filename.substr(placeToStart + 1);
+                    }
+                    res.download(urlFileName, filename);
+                }
                 res.sendFile(urlFileName, { root: path.join(__dirname, "../../../") });
             }
         }
@@ -47,7 +57,7 @@ function dirPage(req, res, next) {
 }
 exports.dirPage = dirPage;
 function pageNotFound(req, res, next) {
-    res.sendStatus(404);
+    res.status(404);
     res.send("<h1>Page not Found</h1>");
 }
 exports.pageNotFound = pageNotFound;
