@@ -2,6 +2,7 @@ import { Request,
          Response,
          NextFunction} from "express";
 import * as fs from "fs";
+import path = require("path");
 
 export function dirPage(req: Request, res: Response, next: NextFunction)
 {
@@ -28,6 +29,10 @@ export function dirPage(req: Request, res: Response, next: NextFunction)
                     }
                 })
                 
+            }
+            else if(stats.isFile())
+            {
+                res.sendFile (urlFileName, { root:path.join(__dirname, "../../../")});
             }
         }
     })

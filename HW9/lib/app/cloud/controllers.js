@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
+const path = require("path");
 function dirPage(req, res, next) {
     let urlFileName = "./dir" + req.path;
     let directoryDisplay = req.originalUrl;
@@ -21,6 +22,9 @@ function dirPage(req, res, next) {
                         });
                     }
                 });
+            }
+            else if (stats.isFile()) {
+                res.sendFile(urlFileName, { root: path.join(__dirname, "../../../") });
             }
         }
     });
