@@ -6,13 +6,12 @@ const bodyParser = require("body-parser");
 const expressSession = require("express-session");
 const expressHandlebars = require("express-handlebars");
 const sessionFileStore = require("session-file-store");
-const helpers = require("./helpers");
 const config = require("../config");
 const cloudRouter = require("./cloud/routes");
 exports.app = express();
 exports.app.engine('hb', expressHandlebars({
     extname: ".hb",
-    helpers: helpers,
+    helpers: require("./helpers"),
 }));
 exports.app.set("view engine", "hb");
 if (config.logFormat) {

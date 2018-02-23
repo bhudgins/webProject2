@@ -52,8 +52,6 @@ export function dirPage(req: Request, res: Response, next: NextFunction)
             {
                 if (req.query.download != undefined)
                 {
-                    //console.log(req.params);
-                    //res.download(path, filename)
                     let filename: string = urlFileName;
                     let placeToStart: number = filename.lastIndexOf("/");
                     if (placeToStart != -1)

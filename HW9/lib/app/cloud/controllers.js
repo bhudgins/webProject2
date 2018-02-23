@@ -41,8 +41,6 @@ function dirPage(req, res, next) {
             }
             else if (stats.isFile()) {
                 if (req.query.download != undefined) {
-                    //console.log(req.params);
-                    //res.download(path, filename)
                     let filename = urlFileName;
                     let placeToStart = filename.lastIndexOf("/");
                     if (placeToStart != -1) {
