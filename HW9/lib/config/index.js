@@ -1,4 +1,5 @@
 "use strict";
+//config file
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.serverPort = 8000;
 exports.sessionSecret = "bunnyslippers";

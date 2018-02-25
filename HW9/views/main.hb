@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        Current directory: <strong>{{currentDirectory}}</strong><br>
-        {{setDirectory currentDirectory}}
+        Current directory: <strong>{{currentDirectory1}}</strong><br>
+        {{setDirectory currentDirectory1}}
         {{#each entries}}
             {{isDirectory this}}
         {{/each}}

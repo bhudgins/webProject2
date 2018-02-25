@@ -1,7 +1,7 @@
 "use strict";
+//Helper functions to determine which pictures should be shown beside file names
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
-//import expressHandlebars = require('express-handlebars');
 const handlebars = require("handlebars");
 var directory;
 var folderPath = "../folder.png";
@@ -24,7 +24,7 @@ function isDirectory(name) {
         name = "./dir/" + name;
     }
     let isfile;
-    console.log(name);
+    // console.log(name);
     //isfile = isFile(name);
     var stat = fs.statSync(name);
     if (stat.isDirectory() === true) {
@@ -34,27 +34,16 @@ function isDirectory(name) {
         isfile = true;
     }
     if (isfile === undefined) {
-        console.log("undefined");
+        // console.log("undefined");
     }
     else if (!isfile) {
-        console.log("directory");
+        //console.log("directory");
         return new handlebars.SafeString(`<img src="${folderPath}" alt="foldericon" width="20px" height="20px">&nbsp;<a href="./${originalName}/">${originalName}</a><br>`);
     }
     else {
-        console.log("file");
+        //console.log("file");
         return new handlebars.SafeString(`<a href="./${originalName}?download"><img src="${downloadPath}" alt="saveicon" width="20px" height="20px"></a>&nbsp;<a href="./${originalName}">${originalName}</a><br>`);
     }
 }
 exports.isDirectory = isDirectory;
-function isFile(name) {
-    let result = false;
-    var stat = fs.statSync(name);
-    if (stat.isDirectory() === true) {
-        return false;
-    }
-    else if (stat.isDirectory() === false) {
-        return true;
-    }
-}
-;
 //# sourceMappingURL=helpers.js.map

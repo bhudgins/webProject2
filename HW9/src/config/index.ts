@@ -1,3 +1,5 @@
+//config file
+//exports all config settings
 export let serverPort = 8000;
 
 export let sessionSecret = "bunnyslippers";

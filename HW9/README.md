@@ -1,0 +1,5 @@
+- Judah Goff and Brandy Hudgins
+- Stack Overflow was consulted at various points to clarify notes
+- No special instructions
+- Could not figure out how to post to the current URL and write a handler for it. Instead posted to /upload and redirected to root.
+- Moves file from temp upload to dir

@@ -1,3 +1,4 @@
+//sets up server
 import {serverPort } from "./config";
 import { app } from "./app";
 

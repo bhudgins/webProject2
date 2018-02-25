@@ -3,26 +3,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
+const config_1 = require("../../config");
 const upload = multer({ dest: "./uploads/" });
+var urlFileName = "";
 function dirPage(req, res, next) {
-    let urlFileName = "./dir" + req.path;
+    urlFileName = "./dir" + req.path;
     let originalURL = req.originalUrl;
     fs.stat(urlFileName, (err, stats) => {
         if (err) {
             if (err.code == 'ENOENT') {
-                console.log("1");
+                //console.log("1");
                 pageNotFound(req, res, next);
             }
         }
         else {
             if (stats.isDirectory()) {
-                console.log(req.url);
-                console.log(req.baseUrl);
-                console.log(req.originalUrl);
-                console.log(req.path);
-                console.log(urlFileName);
-                console.log(originalURL);
-                console.log(req.query);
                 if (originalURL.charAt(originalURL.length - 1) != "/") {
                     res.status(307);
                     res.redirect(originalURL + "/");
@@ -34,7 +29,7 @@ function dirPage(req, res, next) {
                         }
                         else {
                             res.render("main.hb", {
-                                currentDirectory: originalURL,
+                                currentDirectory1: originalURL,
                                 entries: entries,
                             });
                         }
@@ -50,6 +45,7 @@ function dirPage(req, res, next) {
                     }
                     res.download(urlFileName, filename);
                 }
+                res.set("Content-Disposition", "inline");
                 res.sendFile(urlFileName, { root: path.join(__dirname, "../../../") });
             }
         }
@@ -62,8 +58,11 @@ function pageNotFound(req, res, next) {
 }
 exports.pageNotFound = pageNotFound;
 function Upload(req, res, next) {
-    res.type("text/plain");
-    res.send(`Uploaded ${req.file.originalname} to ${req.file.path}`);
+    fs.rename(req.file.path, urlFileName + req.file.originalname, (err) => {
+        if (err)
+            console.log(err);
+    });
+    res.redirect(config_1.currentDirectory);
 }
 exports.Upload = Upload;
 //# sourceMappingURL=controllers.js.map

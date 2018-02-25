@@ -1,8 +1,8 @@
+//sets up router and calls handlers
+//exports router
+
 import {Router} from "express";
 import mw = require("./controllers");
-import { Request,
-    Response,
-    NextFunction} from "express";
 import * as multer from "multer";
 const upload = multer({dest: "./uploads/"});
 
@@ -14,8 +14,3 @@ router.use("/../", mw.pageNotFound);
 router.use("/", mw.dirPage);
 
 export = router;
-
-/*req: Request, res:Response)=>{
-    res.type("text/plain");
-    res.send(`Uploaded ${req.file.originalname} to ${req.file.path}`);
-  }*/
