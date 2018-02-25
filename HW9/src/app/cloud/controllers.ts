@@ -35,6 +35,7 @@ export function dirPage(req: Request, res: Response, next: NextFunction)
                 }
                 else {
                     fs.readdir(urlFileName, (err,entries)=>{
+                        
                         if(err)
                         {
                             console.log(err);

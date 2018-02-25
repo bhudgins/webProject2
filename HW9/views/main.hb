@@ -7,7 +7,8 @@
 <body>
 Current directory: <strong>{{currentDirectory}}</strong><br>
 {{#each entries}}
-    {{isDirectory this}}
+<a href="./{{this}}">{{this}}</a><br>
+    {{!-- {{isDirectory this}} --}}
 {{/each}}
 
 <form method="post" enctype="multipart/form-data">
