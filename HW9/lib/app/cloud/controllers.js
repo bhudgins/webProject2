@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const path = require("path");
+const multer = require("multer");
+const upload = multer({ dest: "./uploads/" });
 function dirPage(req, res, next) {
     let urlFileName = "./dir" + req.path;
     let originalURL = req.originalUrl;
@@ -59,4 +61,9 @@ function pageNotFound(req, res, next) {
     res.send("<h1>Page not Found</h1>");
 }
 exports.pageNotFound = pageNotFound;
+function Upload(req, res, next) {
+    res.type("text/plain");
+    res.send(`Uploaded ${req.file.originalname} to ${req.file.path}`);
+}
+exports.Upload = Upload;
 //# sourceMappingURL=controllers.js.map

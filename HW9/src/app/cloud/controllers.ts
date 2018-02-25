@@ -3,7 +3,9 @@ import { Request,
          NextFunction} from "express";
 import * as fs from "fs";
 import path = require("path");
+import * as multer from "multer";
 
+const upload = multer({dest: "./uploads/"});
 
 export function dirPage(req: Request, res: Response, next: NextFunction)
 {
@@ -71,4 +73,10 @@ export function pageNotFound(req: Request, res: Response, next: NextFunction)
 {
     res.status(404);
     res.send("<h1>Page not Found</h1>");
+}
+
+export function Upload(req: Request, res: Response, next: NextFunction)
+{
+    res.type("text/plain");
+    res.send(`Uploaded ${req.file.originalname} to ${req.file.path}`);
 }
