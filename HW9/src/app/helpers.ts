@@ -4,6 +4,8 @@ import handlebars = require('handlebars');
 import { currentDirectory } from "../config";
 
 var directory: string;
+var folderPath: string = "../folder.png";
+var downloadPath: string = "../download.png";
 
 export function setDirectory(directParam: string)
 {
@@ -19,6 +21,8 @@ export function isDirectory(name: string)
     let originalName: string = name;
     if(directory != "/" && directory !== undefined)
     {   
+        folderPath = "../" + folderPath;
+        downloadPath = "../" + downloadPath;
         name = "./dir/" + directory + "/" + name;
     }
     else{
@@ -27,7 +31,16 @@ export function isDirectory(name: string)
     let isfile;
     console.log(name);
     
-    isfile = isFile(name);
+    //isfile = isFile(name);
+    var stat = fs.statSync(name);
+    if (stat.isDirectory() === true)
+    {
+        isfile = false;
+    }
+    else if (stat.isDirectory() === false)
+    {
+        isfile = true;
+    }
 
     if (isfile === undefined)
     {
@@ -36,12 +49,12 @@ export function isDirectory(name: string)
     else if (!isfile)
     {
         console.log("directory");
-        return new handlebars.SafeString(`<img src="../folder.png" alt="foldericon" width="20px" height="20px">&nbsp;<a href="./${originalName}/">${originalName}</a><br>`);
+        return new handlebars.SafeString(`<img src="${folderPath}" alt="foldericon" width="20px" height="20px">&nbsp;<a href="./${originalName}/">${originalName}</a><br>`);
     }
     else
     {
         console.log("file");
-        return new handlebars.SafeString(`<a href="./${originalName}?download"><img src="../download.png" alt="saveicon" width="20px" height="20px"></a>&nbsp;<a href="./${originalName}">${originalName}</a><br>`);
+        return new handlebars.SafeString(`<a href="./${originalName}?download"><img src="${downloadPath}" alt="saveicon" width="20px" height="20px"></a>&nbsp;<a href="./${originalName}">${originalName}</a><br>`);
     }
 }
 
