@@ -3,9 +3,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 //import expressHandlebars = require('express-handlebars');
 const handlebars = require("handlebars");
+var directory;
+function setDirectory(directParam) {
+    let pos = directParam.indexOf("/");
+    pos = directParam.indexOf("/", pos + 1);
+    directParam = directParam.substring(pos);
+    directory = directParam;
+}
+exports.setDirectory = setDirectory;
 function isDirectory(name) {
     let originalName = name;
-    name = "./dir/" + name;
+    if (directory != "/" && directory !== undefined) {
+        name = "./dir/" + directory + "/" + name;
+    }
+    else {
+        name = "./dir/" + name;
+    }
     let isfile;
     console.log(name);
     isfile = isFile(name);

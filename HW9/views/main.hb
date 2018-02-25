@@ -6,6 +6,7 @@
 </head>
 <body>
 Current directory: <strong>{{currentDirectory}}</strong><br>
+{{setDirectory currentDirectory}}
 {{#each entries}}
 <!-- <a href="./{{this}}">{{this}}</a><br> -->
     {{isDirectory this}}

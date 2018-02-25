@@ -1,11 +1,29 @@
 import * as fs from "fs";
 //import expressHandlebars = require('express-handlebars');
 import handlebars = require('handlebars');
+import { currentDirectory } from "../config";
+
+var directory: string;
+
+export function setDirectory(directParam: string)
+{
+    let pos: number = directParam.indexOf("/");
+    pos = directParam.indexOf("/", pos + 1);
+    directParam = directParam.substring(pos);
+    
+    directory = directParam;
+}
 
 export function isDirectory(name: string)
 {
     let originalName: string = name;
-    name = "./dir/" + name;
+    if(directory != "/" && directory !== undefined)
+    {   
+        name = "./dir/" + directory + "/" + name;
+    }
+    else{
+        name = "./dir/" + name;
+    }
     let isfile;
     console.log(name);
     
