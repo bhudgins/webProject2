@@ -8,8 +8,12 @@ const expressHandlebars = require("express-handlebars");
 const sessionFileStore = require("session-file-store");
 const config = require("../config");
 const cloudRouter = require("./cloud/routes");
-const multer = require("multer");
-const upload = multer({ dest: "./uploads/" });
+/*import * as multer from "multer";
+import { Request,
+  Response,
+  NextFunction} from "express";
+  
+const upload = multer({dest: "./uploads/"});*/
 exports.app = express();
 exports.app.engine('hb', expressHandlebars({
     extname: ".hb",
@@ -27,12 +31,13 @@ exports.app.use(expressSession({
     resave: false,
 }));
 exports.app.use(bodyParser.urlencoded({ extended: false }));
-exports.app.post("/upload", upload.single("file1"), (req, res) => {
-    res.type("text/plain");
-    res.send(`Uploaded ${req.file.originalname} to ${req.file.path}`);
-});
+/*app.post("/upload", upload.single("file1"), (req: Request, res:Response)=>{
+  res.type("text/plain");
+  res.send(`Uploaded ${req.file.originalname} to ${req.file.path}`);
+});*/
 //routes specific to your app
 exports.app.use("/cloud", cloudRouter);
+exports.app.post("/upload", cloudRouter);
 //Static files
 exports.app.use(express.static("./images"));
 //# sourceMappingURL=index.js.map

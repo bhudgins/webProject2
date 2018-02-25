@@ -7,12 +7,12 @@ import expressHandlebars = require('express-handlebars');
 import sessionFileStore = require("session-file-store");
 import * as config from "../config";
 import * as cloudRouter from "./cloud/routes";
-import * as multer from "multer";
+/*import * as multer from "multer";
 import { Request,
   Response,
   NextFunction} from "express";
   
-const upload = multer({dest: "./uploads/"});
+const upload = multer({dest: "./uploads/"});*/
 
 export const app = express();
 app.engine('hb', expressHandlebars({
@@ -36,13 +36,13 @@ app.use(expressSession({
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.post("/upload", upload.single("file1"), (req: Request, res:Response)=>{
+/*app.post("/upload", upload.single("file1"), (req: Request, res:Response)=>{
   res.type("text/plain");
   res.send(`Uploaded ${req.file.originalname} to ${req.file.path}`);
-});
+});*/
 
 //routes specific to your app
 app.use("/cloud", cloudRouter);
-
+app.post("/upload", cloudRouter);
 //Static files
 app.use(express.static("./images"));

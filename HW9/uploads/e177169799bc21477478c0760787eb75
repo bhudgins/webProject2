@@ -1,0 +1,236 @@
+1. Does Ethernet provide connection-oriented or connectionless service?
+
+	Connectionless
+	
+2. Using the computer of your choice, report its physical address, network address, and domain name.
+
+	Physical: 9E-B6-D0-E6-00-AF
+	Network: Local IP - 10.2.99.154 / Public IP - 192.133.129.161
+	Domain Name: WORKGROUP (Computer) / DESKTOP-VJ1S5DK (User)
+	
+
+3. The nslookup program can be used to query the Internet domain name system. Use this program to look up the
+IP address of www.utoronto.ca. What IP addresses are used by this site?
+
+	DNS server handling your query: localhost
+	 DNS server's address:	127.0.0.1#53
+	 
+	 Non-authoritative answer:
+	 www.utoronto.ca	canonical name = d3oxxpqksdxu7j.cloudfront.net.
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.66
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.73
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.88
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.94
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.107
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.125
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.201
+	 Name:	d3oxxpqksdxu7j.cloudfront.net
+	 Address: 13.32.1.217
+	
+4. Use ping to find the round-trip time to http://www.harding.edu.
+
+	Pinging www.harding.edu [104.130.222.174] with 32 bytes of data:
+	Reply from 104.130.222.174: bytes=32 time=41ms TTL=51
+	Reply from 104.130.222.174: bytes=32 time=33ms TTL=51
+	Reply from 104.130.222.174: bytes=32 time=35ms TTL=51
+	Reply from 104.130.222.174: bytes=32 time=30ms TTL=51
+
+	Ping statistics for 104.130.222.174:
+		Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+	Approximate round trip times in milli-seconds:
+		Minimum = 30ms, Maximum = 41ms, Average = 34ms
+	
+	
+Use ping to find the round-trip time to http://www.ibm.com
+
+	Pinging e2874.dscx.akamaiedge.net [23.43.232.196] with 32 bytes of data:
+	Reply from 23.43.232.196: bytes=32 time=39ms TTL=50
+	Reply from 23.43.232.196: bytes=32 time=39ms TTL=50
+	Reply from 23.43.232.196: bytes=32 time=39ms TTL=50
+	Reply from 23.43.232.196: bytes=32 time=39ms TTL=50
+
+	Ping statistics for 23.43.232.196:
+		Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+	Approximate round trip times in milli-seconds:
+		Minimum = 39ms, Maximum = 39ms, Average = 39ms
+	
+Use ping to find the round-trip time to http://www.apple.com
+
+	Pinging e6858.dsce9.akamaiedge.net [23.73.145.203] with 32 bytes of data:
+	Reply from 23.73.145.203: bytes=32 time=24ms TTL=59
+	Reply from 23.73.145.203: bytes=32 time=24ms TTL=59
+	Reply from 23.73.145.203: bytes=32 time=24ms TTL=59
+	Reply from 23.73.145.203: bytes=32 time=25ms TTL=59
+
+	Ping statistics for 23.73.145.203:
+		Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+	Approximate round trip times in milli-seconds:
+		Minimum = 24ms, Maximum = 25ms, Average = 24ms
+
+Capture each ping session in a text file and turn-in the output for all three.
+
+	
+
+5. Use tracert to discover what network routers are on a path from you to
+a) http://www.harding.edu
+b) http://www.google.com
+c) http://www.help.com (Hint: For this one you might want to specify the "-h 10" option.)
+ Capture each session in a text file and submit it.
+ 
+	a)Tracing route to www.harding.edu [104.130.222.174]
+over a maximum of 30 hops:
+
+  1     2 ms     3 ms     2 ms  10.2.96.5
+  2     3 ms     4 ms     2 ms  192.133.129.1
+  3     4 ms     4 ms     6 ms  64-233-134-161.ritternet.com [64.233.134.161]
+  4    28 ms    26 ms    21 ms  v216.core1.atl1.he.net [216.66.14.57]
+  5    37 ms    51 ms    44 ms  100ge16-1.core1.chi1.he.net [72.52.92.45]
+  6    51 ms    78 ms    46 ms  100ge14-1.core2.chi1.he.net [184.105.81.97]
+  7    37 ms    35 ms    43 ms  bbr1.ord1.rackspace.net [206.223.119.14]
+  8    45 ms    49 ms    48 ms  10.25.0.65
+  9    38 ms    38 ms    37 ms  dcpe1-coreb.ord1.rackspace.net [50.56.6.163]
+ 10    36 ms    38 ms    36 ms  core1-coreb.ord1.rackspace.net [184.106.126.129]
+ 11    46 ms    39 ms    37 ms  core1.aggr601a-12.ord1.rackspace.net [184.106.126.217]
+ 12    32 ms    34 ms    31 ms  104.130.222.174
+
+Trace complete.
+
+
+	b)Tracing route to www.google.com [216.58.218.132]
+over a maximum of 30 hops:
+
+  1     2 ms     1 ms     1 ms  10.2.96.5
+  2     3 ms     2 ms     2 ms  192.133.129.1
+  3    10 ms     9 ms    10 ms  64-233-134-161.ritternet.com [64.233.134.161]
+  4    31 ms    30 ms    30 ms  72.14.218.114
+  5    25 ms    21 ms    23 ms  108.170.240.193
+  6    24 ms    21 ms    20 ms  108.170.238.225
+  7    21 ms    20 ms    20 ms  dfw25s08-in-f132.1e100.net [216.58.218.132]
+
+Trace complete.
+
+
+	c) Tracing route to group1.sites.hscoscdn00.net [104.17.133.180]
+over a maximum of 30 hops:
+
+  1     2 ms     1 ms     2 ms  10.2.96.5
+  2     3 ms     2 ms     2 ms  192.133.129.1
+  3     8 ms    27 ms    13 ms  64-233-134-161.ritternet.com [64.233.134.161]
+  4    35 ms    34 ms    34 ms  128.177.133.29
+  5    41 ms    42 ms    46 ms  13335.dal.equinix.com [206.223.118.145]
+  6    36 ms    36 ms    36 ms  104.17.133.180
+
+Trace complete.
+	
+	
+6. Capture into a text file the output generated by the command: netstat -e
+
+	Interface Statistics
+
+                           Received            Sent
+
+Bytes                     883948902        70030554
+Unicast packets              683546          364827
+Non-unicast packets          425130            4806
+Discards                          0               0
+Errors                            0               0
+Unknown protocols                 0
+
+
+Capture into a text file the output generated by the command: netstat -o
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    10.2.99.154:49409      bn3sch020010626:https  ESTABLISHED     3792
+  TCP    10.2.99.154:49784      msnbot-65-52-108-217:https  ESTABLISHED     10824
+  TCP    10.2.99.154:49980      a23-196-40-117:https   CLOSE_WAIT      8520
+  TCP    10.2.99.154:49981      a23-196-40-117:https   CLOSE_WAIT      8520
+  TCP    10.2.99.154:50490      10.2.99.152:8009       ESTABLISHED     9716
+  TCP    10.2.99.154:50491      10.2.98.1:8009         ESTABLISHED     9716
+  TCP    10.2.99.154:50492      chromecast-ultra:8009  ESTABLISHED     9716
+  TCP    10.2.99.154:50496      on-in-f188:5228        ESTABLISHED     9716
+  TCP    10.2.99.154:50535      on-in-f188:5228        ESTABLISHED     9716
+  TCP    10.2.99.154:52817      72.21.81.200:https     CLOSE_WAIT      6828
+  TCP    10.2.99.154:53404      dfw25s16-in-f142:https  ESTABLISHED     9716
+  TCP    10.2.99.154:53427      10.2.99.29:7678        TIME_WAIT       0
+  TCP    10.2.99.154:53428      10.2.98.186:57561      CLOSE_WAIT      9716
+  TCP    10.2.99.154:53429      10.2.98.10:34880       CLOSE_WAIT      9716
+  TCP    10.2.99.154:53431      10.2.98.186:57561      CLOSE_WAIT      9716
+  TCP    10.2.99.154:53432      10.2.98.10:34880       CLOSE_WAIT      9716
+  TCP    10.2.99.154:53460      64.4.54.254:https      SYN_SENT        3488
+  TCP    127.0.0.1:5354         DESKTOP-VJ1S5DK:49668  ESTABLISHED     3460
+  TCP    127.0.0.1:5354         DESKTOP-VJ1S5DK:49670  ESTABLISHED     3460
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53391  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53392  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53393  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53394  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53395  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53396  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53397  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53398  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53399  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53400  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53401  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53402  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53403  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53405  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53406  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53407  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53408  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53409  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53410  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53411  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53412  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53413  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53414  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53415  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53416  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53417  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53418  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53419  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53420  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53421  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53422  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53423  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53424  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53425  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53426  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53433  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53434  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53436  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53438  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53440  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53441  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53442  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53443  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53444  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53445  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53446  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53447  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53448  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53449  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53450  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53451  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53452  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53453  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53454  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53455  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53456  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53457  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53458  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53459  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53461  TIME_WAIT       0
+  TCP    127.0.0.1:8585         DESKTOP-VJ1S5DK:53462  ESTABLISHED     3684
+  TCP    127.0.0.1:27015        DESKTOP-VJ1S5DK:49755  ESTABLISHED     3452
+  TCP    127.0.0.1:49668        DESKTOP-VJ1S5DK:5354   ESTABLISHED     3452
+  TCP    127.0.0.1:49670        DESKTOP-VJ1S5DK:5354   ESTABLISHED     3452
+  TCP    127.0.0.1:49755        DESKTOP-VJ1S5DK:27015  ESTABLISHED     10768
+  TCP    127.0.0.1:53462        DESKTOP-VJ1S5DK:8585   ESTABLISHED     11144
