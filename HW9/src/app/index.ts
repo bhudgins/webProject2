@@ -33,4 +33,4 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use("/cloud", cloudRouter);
 
 //Static files
-app.use(express.static("./static"));
+app.use(express.static("./images"));

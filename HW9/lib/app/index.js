@@ -28,5 +28,5 @@ exports.app.use(bodyParser.urlencoded({ extended: false }));
 //routes specific to your app
 exports.app.use("/cloud", cloudRouter);
 //Static files
-exports.app.use(express.static("./static"));
+exports.app.use(express.static("./images"));
 //# sourceMappingURL=index.js.map

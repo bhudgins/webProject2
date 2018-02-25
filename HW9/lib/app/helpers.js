@@ -2,44 +2,35 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 //import expressHandlebars = require('express-handlebars');
-//import handlebars = require('handlebars');
+const handlebars = require("handlebars");
 function isDirectory(name) {
+    let originalName = name;
     name = "./dir/" + name;
+    let isfile;
     console.log(name);
-    fs.stat(name, (err, stats) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            if (stats.isDirectory()) {
-                console.log(1);
-                //return new handlebars.SafeString(`<img src="../images/folder.png" alt="foldericon"><a href="./{{this}}">{{this}}</a><br>`);
-                //'<img src="../images/folder.png" alt="foldericon"><a href="./{{this}}">{{this}}</a><br>';
-            }
-            else {
-                console.log(2);
-                //return new handlebars.SafeString(`<a href="./{{this}}?download"><img src="../images/download.png" alt="foldericon"></a><a href="./{{this}}">{{this}}</a><br>`);
-            }
-        }
-    });
+    isfile = isFile(name);
+    if (isfile === undefined) {
+        console.log("undefined");
+    }
+    else if (!isfile) {
+        console.log("directory");
+        return new handlebars.SafeString(`<img src="../folder.png" alt="foldericon" width="20px" height="20px">&nbsp;<a href="./${originalName}/">${originalName}</a><br>`);
+    }
+    else {
+        console.log("file");
+        return new handlebars.SafeString(`<a href="./${originalName}?download"><img src="../download.png" alt="saveicon" width="20px" height="20px"></a>&nbsp;<a href="./${originalName}">${originalName}</a><br>`);
+    }
 }
 exports.isDirectory = isDirectory;
-/*export function ifIsDirectory(block:any)
-{
-    fs.stat(this, (err, stats) => {
-        if (err) {
-            if (err.code == 'ENOENT')
-            {
-            }
-        }
-        else {
-            if (stats.isDirectory())
-            {
-                return block(this);
-            }
-            else
-                return block.inverse(this);
-        }
-    })
-}*/ 
+function isFile(name) {
+    let result = false;
+    var stat = fs.statSync(name);
+    if (stat.isDirectory() === true) {
+        return false;
+    }
+    else if (stat.isDirectory() === false) {
+        return true;
+    }
+}
+;
 //# sourceMappingURL=helpers.js.map
