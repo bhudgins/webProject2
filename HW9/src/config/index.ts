@@ -6,6 +6,6 @@ export let sessionSecret = "bunnyslippers";
 
 export let logFormat = "dev";
 
-export let cloudDirectory = "../dir";
+export let cloudDirectory = "./dir";
 
 export let currentDirectory = "/cloud/";

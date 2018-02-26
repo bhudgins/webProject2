@@ -6,14 +6,14 @@ import { Request,
 import * as fs from "fs";
 import path = require("path");
 import * as multer from "multer";
-import {currentDirectory} from "../../config"
+import {currentDirectory, cloudDirectory} from "../../config"
 const upload = multer({dest: "./uploads/"});
 var urlFileName: string = "";
 
 //determines if the url is feasible; if so, determines if it is a File or Directory and whether or not to download
 export function dirPage(req: Request, res: Response, next: NextFunction)
 {
-    urlFileName = "./dir" + req.path;
+    urlFileName = cloudDirectory + req.path;
     let originalURL: string = req.originalUrl;
 
     fs.stat(urlFileName, (err, stats)=>{
@@ -77,10 +77,13 @@ export function pageNotFound(req: Request, res: Response, next: NextFunction)
 export function Upload(req: Request, res: Response, next: NextFunction)
 {
     //moves file from temp upload folder to dir
-   
-    fs.rename(req.file.path, urlFileName + req.file.originalname, (err) => {
+    console.log(req.path);
+   if(req.file != undefined){
+    fs.rename(req.file.path, cloudDirectory + req.path + req.file.originalname, (err) => {
         if(err)
             console.log(err);
     });
-    res.redirect(currentDirectory);
+    }
+    res.redirect(currentDirectory + req.path);
+
 }

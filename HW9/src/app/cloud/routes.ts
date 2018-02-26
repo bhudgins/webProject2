@@ -8,7 +8,7 @@ const upload = multer({dest: "./uploads/"});
 
 let router: Router = Router();
 
-router.post("/upload", upload.single("file1"), mw.Upload);
+router.post("/*", upload.single("file1"), mw.Upload);
 
 router.use("/../", mw.pageNotFound);
 router.use("/", mw.dirPage);

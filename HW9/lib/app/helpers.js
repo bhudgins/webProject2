@@ -1,6 +1,7 @@
 "use strict";
-//Helper functions to determine which pictures should be shown beside file names
 Object.defineProperty(exports, "__esModule", { value: true });
+//Helper functions to determine which pictures should be shown beside file names
+// exports setDirectory and isDirectory
 const fs = require("fs");
 const handlebars = require("handlebars");
 var directory;
@@ -16,6 +17,7 @@ exports.setDirectory = setDirectory;
 function isDirectory(name) {
     let originalName = name;
     if (directory != "/" && directory !== undefined) {
+        //If not root directory, edit the paths
         folderPath = "../" + folderPath;
         downloadPath = "../" + downloadPath;
         name = "./dir/" + directory + "/" + name;
@@ -24,8 +26,6 @@ function isDirectory(name) {
         name = "./dir/" + name;
     }
     let isfile;
-    // console.log(name);
-    //isfile = isFile(name);
     var stat = fs.statSync(name);
     if (stat.isDirectory() === true) {
         isfile = false;

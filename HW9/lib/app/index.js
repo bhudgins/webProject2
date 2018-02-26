@@ -1,6 +1,7 @@
 "use strict";
-//Sets up app and routers.
 Object.defineProperty(exports, "__esModule", { value: true });
+//Sets up app and routers.
+//exports app
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");

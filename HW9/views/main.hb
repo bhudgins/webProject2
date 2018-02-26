@@ -11,7 +11,7 @@
             {{isDirectory this}}
         {{/each}}
 
-        <form method="post" enctype="multipart/form-data" action="/upload">
+        <form method="post" enctype="multipart/form-data">
             <p><input type="file" name="file1" /></p>
             <p><input type ="submit" value="Upload"/></p>
         </form>

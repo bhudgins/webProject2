@@ -6,8 +6,9 @@ const multer = require("multer");
 const config_1 = require("../../config");
 const upload = multer({ dest: "./uploads/" });
 var urlFileName = "";
+//determines if the url is feasible; if so, determines if it is a File or Directory and whether or not to download
 function dirPage(req, res, next) {
-    urlFileName = "./dir" + req.path;
+    urlFileName = config_1.cloudDirectory + req.path;
     let originalURL = req.originalUrl;
     fs.stat(urlFileName, (err, stats) => {
         if (err) {
@@ -58,11 +59,15 @@ function pageNotFound(req, res, next) {
 }
 exports.pageNotFound = pageNotFound;
 function Upload(req, res, next) {
-    fs.rename(req.file.path, urlFileName + req.file.originalname, (err) => {
-        if (err)
-            console.log(err);
-    });
-    res.redirect(config_1.currentDirectory);
+    //moves file from temp upload folder to dir
+    console.log(req.path);
+    if (req.file != undefined) {
+        fs.rename(req.file.path, config_1.cloudDirectory + req.path + req.file.originalname, (err) => {
+            if (err)
+                console.log(err);
+        });
+    }
+    res.redirect(config_1.currentDirectory + req.path);
 }
 exports.Upload = Upload;
 //# sourceMappingURL=controllers.js.map
